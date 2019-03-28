@@ -1,6 +1,16 @@
-<h1>Cocktails#index</h1>
-<%= link_to 'Add Cocktail', new_cocktail_path %>
-<% @cocktails.each do |cocktail| %>
-  <br>
-  <%= link_to cocktail.name, cocktail_path(cocktail) %>
-<% end %>
+<div class="img-background">
+  <h1>Cocktails</h1>
+  <%= link_to 'Add Cocktail', new_cocktail_path %>
+
+  <%= select_tag "timezone", options_from_collection_for_select(
+      ActiveSupport::TimeZone.all.
+        map { |tz| tz.tzinfo }.
+        sort_by { |tzinfo| tzinfo.name },
+      :name, :name),
+      class: 'select2' %>
+
+  <% @cocktails.each do |cocktail| %>
+    <br>
+    <%= link_to cocktail.name, cocktail_path(cocktail) %>
+  <% end %>
+</div>
