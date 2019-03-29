@@ -17,3 +17,9 @@ h2, p, a {
 p, a {
   font-size: 18px
 }
+
+a:hover {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}

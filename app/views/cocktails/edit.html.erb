@@ -1,0 +1,10 @@
+<div class="img-background">
+  <h1 id="title-main" class="text-center"><%= @cocktail.name.titleize %></h1>
+  <div class="container" style="color: white; font-size: 18px;">
+    <%= simple_form_for(@cocktail) do |f| %>
+      <%= f.input :image %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+

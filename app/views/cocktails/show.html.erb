@@ -1,4 +1,9 @@
-<div class="img-background">
+<% if @cocktail.image.nil? %>
+  <div class="img-background">
+<% else %>
+  <div class="img-background" style="background-image: url(<%= @cocktail.image %>)">
+<% end %>
+
 <!--   <%= link_to 'Add Cocktail', new_cocktail_path, class: "btn btn-primary text-right" %> -->
   <h1 id="title-main" class="text-center">Mister Cocktail</h1>
   <div class="container">
@@ -19,7 +24,7 @@
 
     <div class="pt-5 d-flex justify-content-between">
       <h2><%= @cocktail.name %></h1>
-      <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>
+      <%= link_to 'Upload Photo', edit_cocktail_path(@cocktail) %>
     </div>
 
     <% @cocktail.doses.each do |dose| %>
