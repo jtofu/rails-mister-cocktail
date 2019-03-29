@@ -24,3 +24,11 @@ import 'select2/dist/css/select2.css';
 import { initSelect2 } from '../components/init_select2';
 
 initSelect2();
+
+const cocktail = document.getElementById('cocktail');
+const cocktails = document.getElementById('cocktails');
+
+cocktails.addEventListener('submit', (event) => {
+  event.preventDefault();
+  window.location = `/cocktails/${cocktail[cocktail.selectedIndex].dataset.id}`;
+});

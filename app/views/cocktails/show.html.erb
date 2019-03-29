@@ -1,9 +1,35 @@
-<h1><%= @cocktail.name %></h1>
-<%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>
-<% @cocktail.doses.each do |dose| %>
-  <p><%= dose.description %></p>
-  <p><%= dose.ingredient.name %></p>
-  <%= link_to 'Delete', dose_path(dose),
-    method: :delete,
-    data: { confirm: "Are you sure?"} %>
-<% end %>
+<div class="img-background">
+<!--   <%= link_to 'Add Cocktail', new_cocktail_path, class: "btn btn-primary text-right" %> -->
+  <h1 id="title-main" class="text-center">Mister Cocktail</h1>
+  <div class="container">
+    <form id="cocktails" class="">
+      <div class="form-row">
+        <div class="col-10">
+          <select class="form-control" id="cocktail">
+            <% @cocktails.each do |cocktail| %>
+              <option data-id=<%= cocktail.id.to_s %>><%= cocktail.name %></option>
+            <% end %>
+          </select>
+        </div>
+        <div class="col-2">
+          <input type="submit" class="form-control">
+        </div>
+      </div>
+    </form>
+
+    <div class="pt-5 d-flex justify-content-between">
+      <h2><%= @cocktail.name %></h1>
+      <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>
+    </div>
+
+    <% @cocktail.doses.each do |dose| %>
+      <br>
+      <%= link_to dose.ingredient.name + ": " + dose.description, dose_path(dose),
+        method: :delete,
+        data: { confirm: "Delete #{dose.ingredient.name}?"} %>
+    <% end %>
+    <div class="pt-5">
+      <%= link_to 'Add dose', new_cocktail_dose_path(@cocktail) %>
+    </div>
+  </div>
+</div>
